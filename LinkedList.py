@@ -10,7 +10,7 @@ class LinkedList:
     def __init__(self):
         self.head = None
 
-    #TODO define insert, update, delete, and print methods
+
     def insert(self, data):
         # create a new node
         new_node = Node(data)
@@ -58,10 +58,18 @@ class LinkedList:
                 # loop through rest of linked list
                 current_node = current_node.next
 
+    def delete(self, value_to_delete):
+        current_node = self.head
+        while(current_node):
+            if current_node.next:
+                if current_node.next.data == value_to_delete:
+                    current_node.next = current_node.next.next
+            if current_node.data == value_to_delete:
+                self.head = current_node.next
+
+            current_node = current_node.next
 
 
-    def delete(self,data):
-        pass
 
     def printlinkedlist(self):
         # print current node
