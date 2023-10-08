@@ -25,10 +25,42 @@ class LinkedList:
         else:
             self.head = new_node
 
-    def update(self, data):
-        pass
+    def update(self, current_value, new_value):
+        # Create a new node for the new value
+        new_node = Node(new_value)
 
-    def delete(self):
+        # Get the current linked list
+        current_node = self.head
+
+        # loop through linked list
+        while (current_node):
+            # if value to update is later in the linked list
+            if (current_node.next):
+                if current_node.next.data == current_value:
+                    # Assign remaining linked list to new_node.nedt
+                    new_node.next = current_node.next.next
+                    # Assign current_node's next to the new node
+                    # This will look like beginning --> new node --> remaining list
+                    current_node.next = new_node
+
+                    # Work through rest of list
+                    current_node = current_node.next
+
+            # If value is current (first) node, replace and assign new node
+            if current_node.data == current_value:
+                # assign remaining linked list to new_node
+                new_node.next = current_node.next
+                # make the new node the current node and heasd of the linked list
+                current_node = new_node
+                self.head = current_node
+
+            else:
+                # loop through rest of linked list
+                current_node = current_node.next
+
+
+
+    def delete(self,data):
         pass
 
     def printlinkedlist(self):
